@@ -1,8 +1,7 @@
 import { authService } from "fBase";
 import React from "react";
 import { useHistory } from "react-router";
-
-export default () => {
+const Profile = () => {
   const history = useHistory();
 
   const onLogOutClick = () => {
@@ -15,3 +14,5 @@ export default () => {
     </React.Fragment>
   );
 };
+
+export default Profile;
