@@ -5,16 +5,12 @@ import { authService } from "fBase";
 console.log(authService.currentUser);
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
 
   useEffect(() => {
     authService.onAuthStateChanged(user => {
       if (user) {
-        setIsLoggedIn(true);
         setUserObj(user);
-      } else {
-        setIsLoggedIn(false);
       }
       setInit(true);
     });
@@ -24,7 +20,7 @@ function App() {
   return (
     <React.Fragment>
       {init ? (
-        <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}></AppRouter>
+        <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj}></AppRouter>
       ) : (
         "Initializing...."
       )}
