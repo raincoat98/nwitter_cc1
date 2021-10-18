@@ -15,6 +15,8 @@ function App() {
           uid: user.uid,
           updateProfile: args => user.updateProfile(args),
         });
+      } else {
+        setUserObj(null);
       }
       setInit(true);
     });
@@ -30,7 +32,7 @@ function App() {
     });
   };
   return (
-    <React.Fragment>
+    <>
       {init ? (
         <AppRouter
           refreshUser={refreshUser}
@@ -40,7 +42,7 @@ function App() {
       ) : (
         "Initializing...."
       )}
-    </React.Fragment>
+    </>
   );
 }
 
